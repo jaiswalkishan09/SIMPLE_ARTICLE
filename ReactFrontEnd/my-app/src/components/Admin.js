@@ -10,6 +10,7 @@ export const mycontext = React.createContext();
 function Admin() {
   const [users, setUsers] = useState([]);
   const [editUser, setEditUser] = useState(null);
+ // eslint-disable-next-line 
   const [token, setToken, removeToken] = useCookies(["mytoken"]);
   // const [showUser, setShowArticle] = useState(false);
   let is_staff = JSON.parse(sessionStorage?.getItem("is_staff"));

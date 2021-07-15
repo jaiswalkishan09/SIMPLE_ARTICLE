@@ -12,6 +12,7 @@ export const mycontext=React.createContext()
 function App() {
   const [articles, setArticles] = useState([])
   const [editArticle, setEditArticle] = useState(null)
+  //eslint-disable-next-line 
   const [token, setToken, removeToken] = useCookies(['mytoken'])
   let is_staff = JSON.parse(sessionStorage?.getItem("is_staff"));
   const [insertArticle,setInsertArticle] = useState(false);

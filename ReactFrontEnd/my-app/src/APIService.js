@@ -58,8 +58,7 @@ export default class APIService {
       if (resp.status === 201) {
         return resp.json();
       } else {
-        
-        alert("Username Already Exits if you Have account please Login");
+        alert("Pleas Input valid  data or you Have account please Login");
       }
     });
   }

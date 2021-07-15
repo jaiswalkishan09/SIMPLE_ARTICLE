@@ -24,19 +24,23 @@ function Login() {
           sessionStorage.setItem("is_staff", resp.is_staff);
         }
       });
-    } else {
+    } else{
       alert("Please Enter Username and Password");
     }
   };
 
   const RegisterBtn = () => {
-    APIService.RegisterUser({ username,email, password })
+   
+      APIService.RegisterUser({ username,email, password })
       .then((resp) => {
        if (Boolean(resp)) {
 
           loginBtn();
-        } 
+        }
+       
       })
+    
+ 
   };
   return (
     <div className="App">

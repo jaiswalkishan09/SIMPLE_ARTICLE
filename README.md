@@ -6,6 +6,9 @@ i.e if a user is super user than he has permission to do CRUD operation both on 
 -super user has permisson to both read update and delete article and users from the mainpage
 
 It uses token authentication from DRF.
-It uses Reach hooks 
+It uses React hooks 
 
+
+
+In admin pannel of user you can grant acces revoke access from the users
 
