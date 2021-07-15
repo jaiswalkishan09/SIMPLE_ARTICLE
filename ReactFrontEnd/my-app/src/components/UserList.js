@@ -28,7 +28,7 @@ function UserList(props) {
               </button>
             </div>
 
-            <div className="col-md-0">
+            <div className="col-md">
               <button
                 onClick={() => deleteBtn(user)}
                 className="btn btn-danger"
@@ -45,25 +45,27 @@ function UserList(props) {
 
   return (
     <div>
-      <div class="container">
+      <div class="container-full">
         <div class="row text-uppercase">
           <div class="col-md-1 badge bg-primary text-wrap"><h6>#</h6></div>
           <div class="col-md-3 badge bg-primary text-wrap"><h6>username</h6></div>
-          <div class="col-md-4 badge bg-primary text-wrap"><h6>email</h6></div>
+          <div class="col-md-3 badge bg-primary text-wrap"><h6>email</h6></div>
+          <div class="col-md-1 badge bg-primary text-wrap"><h6>is_staff</h6></div>
           <div class="col-md-2  badge bg-primary text-wrap"><h6>Edit</h6></div>
           <div class="col-md-2 badge bg-primary text-wrap"><h6>Delete</h6></div>
         </div>
       </div>
 
-      <div class="container">
+      <div class="container-full">
         {props.users &&
           props.users.map((user) => {
             return (
               <div class="row" key={user.id}>
                 <div class="col-md-1">{user.id}</div>
                 <div class="col-md-3">{user.username}</div>
-                <div class="col-md-4">{user.email}</div>
-                <div class="col-md-4">{getUpdatDeletebutton(user)}</div>
+                <div class="col-md-3">{user.email}</div>
+                <div class="col-md-2">{user.is_staff?<p>True</p>:<p>False</p>}</div>
+                <div class="col-md-3">{getUpdatDeletebutton(user)}</div>
 
                 <hr className="hrclass" />
               </div>
