@@ -1,8 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
 import {useState, useEffect} from 'react'
 import ArticleList from './components/ArticleList';
-import Admin from './components/Admin';
+// import Admin from './components/Admin';
 import Form from './components/Form';
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom';
@@ -14,7 +14,6 @@ function App() {
   const [articles, setArticles] = useState([])
   const [editArticle, setEditArticle] = useState(null)
   const [token, setToken, removeToken] = useCookies(['mytoken'])
-  const [showArticle, setShowArticle] = useState(false);
   let is_staff = JSON.parse(sessionStorage?.getItem("is_staff"));
   const [insertArticle,setInsertArticle] = useState(false);
   

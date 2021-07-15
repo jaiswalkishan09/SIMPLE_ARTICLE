@@ -4,32 +4,41 @@ import { useCookies } from "react-cookie";
 
 function UserForm(props) {
   const [username, setUserName] = useState("");
-  const [description, setDescription] = useState("");
+  const [first_name, setFirst_Name] = useState("");
+  const [last_name, setLast_Name] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [token] = useCookies(["mytoken"]);
+  
 
   useEffect(() => {
     setUserName(props.user.username);
-    setDescription(props.user.description);
+    setFirst_Name(props.user.first_name);
+    setLast_Name(props.user.last_name);
+    setEmail(props.user.email);
+    setEmail(props.user.password);
   }, [props.user]);
 
   const updateUser = () => {
     APIUserService.UpdateUser(
       props.user.id,
-      { username, description },
+      { username, first_name, last_name, email },
       token["mytoken"]
     ).then((resp) => {
+      console.log("asadaf", props.setInsertUser());
       props.setInsertUser(false);
       props.updatedInformation(resp);
     });
   };
 
   const insertUser = () => {
-    APIUserService.InsertUser({ username, description }, token["mytoken"]).then(
-      (resp) => {
-        props.setInsertUser(false);
-        props.insertedInformation(resp);
-      }
-    );
+    APIUserService.InsertUser(
+      { username, first_name, last_name, email, password },
+      token["mytoken"]
+    ).then((resp) => {
+      props.setInsertUser(false);
+      props.insertedInformation(resp);
+    });
   };
 
   const goBack = () => {
@@ -53,17 +62,46 @@ function UserForm(props) {
           />
 
           <label htmlFor="description" className="form-label">
-            Description
+            first_name
           </label>
 
           <textarea
             className="form-control"
-            id="description"
-            rows="5"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            id="first_name"
+            rows="1"
+            value={first_name}
+            onChange={(e) => setFirst_Name(e.target.value)}
           ></textarea>
 
+          <label>last_name</label>
+          <textarea
+            className="form-control"
+            id="last_name"
+            rows="1"
+            value={last_name}
+            onChange={(e) => setLast_Name(e.target.value)}
+          ></textarea>
+          <label>email</label>
+          <textarea
+            className="form-control"
+            id="email"
+            rows="1"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></textarea>
+          {console.log("ise", props.isEditable)}
+          {props?.isEditable && (
+            <div>
+              <label>password</label>
+              <textarea
+                className="form-control"
+                id="password"
+                rows="1"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></textarea>
+            </div>
+          )}
           <br />
 
           {props.user.id ? (
@@ -81,7 +119,7 @@ function UserForm(props) {
                 Go Back
               </button>
               <button onClick={insertUser} className="btn btn-success">
-                Insert User
+                Save User
               </button>
             </div>
           )}
