@@ -12,7 +12,6 @@ function UserList(props) {
   };
 
   const deleteBtn = (user) => {
-    console.log(APIUserService);
     APIUserService.DeleteUser(user.id, token["mytoken"])
       .then(() => props.deleteBtn(user))
       .catch((error) => console.log(error));
@@ -21,7 +20,7 @@ function UserList(props) {
   const getUpdatDeletebutton = (user) => {
     if (is_staff) {
       return (
-        <div className="container">
+        <div className="container-full">
           <div className="row">
             <div className="col-md">
               <button className="btn btn-primary" onClick={() => editBtn(user)}>
@@ -47,14 +46,14 @@ function UserList(props) {
   return (
     <div>
       <div class="container-full">
-        <div class="row">
-          <div class="col-md-0">#</div>
-          <div class="col-md-1">username</div>
-          <div class="col-md-2 ">first_name</div>
-          <div class="col-md-2">last_name</div>
-          <div class="col-md-3">email</div>
-          <div class="col-md-2">Edit</div>
-          <div class="col-md-0">Delete</div>
+        <div class="row text-uppercase">
+          <div class="col-md-0 badge bg-primary text-wrap"><h6>#</h6></div>
+          <div class="col-md-1.6 badge bg-primary text-wrap"><h6>username</h6></div>
+          <div class="col-md-2  badge bg-primary text-wrap"><h6>first_name</h6></div>
+          <div class="col-md-2 badge bg-primary text-wrap"><h6>last_name</h6></div>
+          <div class="col-md-3 badge bg-primary text-wrap"><h6>email</h6></div>
+          <div class="col-md-2  badge bg-primary text-wrap"><h6>Edit</h6></div>
+          <div class="col-md-0 badge bg-primary text-wrap"><h6>Delete</h6></div>
         </div>
       </div>
 
@@ -64,11 +63,11 @@ function UserList(props) {
             return (
               <div class="row" key={user.id}>
                 <div class="col-md-0">{user.id}</div>
-                <div class="col-md-1">{user.username}</div>
+                <div class="col-md-2">{user.username}</div>
                 <div class="col-md-2">{user.first_name}</div>
                 <div class="col-md-2">{user.last_name}</div>
                 <div class="col-md-3">{user.email}</div>
-                <div class="col-md-3">{getUpdatDeletebutton(user)}</div>
+                <div class="col-md-2">{getUpdatDeletebutton(user)}</div>
 
                 <hr className="hrclass" />
               </div>

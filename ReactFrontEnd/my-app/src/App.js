@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     if(!token['mytoken']) {
         history.push('/')
-        //window.location.href = '/'
+        
        
     }
 }, [token])
@@ -105,7 +105,7 @@ function App() {
       <div className = "row">
       <div className = "col">
     
-        <h2>Django And ReactJS Course</h2>
+        <h2>Article</h2>
         <br/>
         </div>
         

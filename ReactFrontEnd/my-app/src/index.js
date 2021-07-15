@@ -17,7 +17,7 @@ function Router() {
 
     <Route exact path = "/" component = {Login}/>
     <Route exact path = "/articles" component = {App}/>
-     <Route exact path="/users" component={Admin}></Route>
+     <Route exact path="/users" component={Admin}></Route>  
 
     </BrowserRouter>
     </CookiesProvider>

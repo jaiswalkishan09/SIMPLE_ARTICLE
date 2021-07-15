@@ -34,7 +34,7 @@ function Admin() {
   useEffect(() => {
     if (!token["mytoken"]) {
       history.push("/");
-      //window.location.href = '/'
+      
     }
   }, [token]);
 
@@ -67,7 +67,6 @@ function Admin() {
   };
 
   const deleteBtn = (user) => {
-    console.log("adfadadfafda", users);
     const new_users = users.filter((myuser) => {
       if (myuser.id === user.id) {
         return false;
@@ -87,7 +86,7 @@ function Admin() {
     <div className="App">
       <div className="row">
         <div className="col">
-          <h2>Django And ReactJS Course</h2>
+          <h2>Users</h2>
           <br />
         </div>
 
@@ -132,18 +131,3 @@ function Admin() {
 
 export default Admin;
 
-//   useEffect(() => {
-//     fetch("http://localhost:8000/api/users/", {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Token ${token["mytoken"]}`,
-//       },
-//     })
-//       .then((resp) => resp.json())
-//       .then((resp) => {
-//         setUsers(resp);
-//         console.log(resp);
-//       })
-//       .catch((error) => console.log(error));
-//   }, [users.length]);

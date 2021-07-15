@@ -25,7 +25,7 @@ function UserForm(props) {
       { username, first_name, last_name, email },
       token["mytoken"]
     ).then((resp) => {
-      console.log("asadaf", props.setInsertUser());
+     
       props.setInsertUser(false);
       props.updatedInformation(resp);
     });
@@ -89,7 +89,7 @@ function UserForm(props) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></textarea>
-          {console.log("ise", props.isEditable)}
+         
           {props?.isEditable && (
             <div>
               <label>password</label>
