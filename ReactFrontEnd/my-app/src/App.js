@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react'
 import ArticleList from './components/ArticleList';
+import Admin from './components/Admin';
 import Form from './components/Form';
 import {useCookies} from 'react-cookie';
 import {useHistory} from 'react-router-dom';
@@ -16,6 +17,8 @@ function App() {
   const [showArticle, setShowArticle] = useState(false);
   let is_staff = JSON.parse(sessionStorage?.getItem("is_staff"));
   const [insertArticle,setInsertArticle] = useState(false);
+  
+  
 
   let history = useHistory()
 
@@ -33,7 +36,7 @@ function App() {
 
   }, [articles.length])
 
-
+ 
   useEffect(() => {
     if(!token['mytoken']) {
         history.push('/')
@@ -68,11 +71,16 @@ function App() {
 
   }
 
+  const handleUsers = () =>{ 
+    history.push("/users");
+  }
+
   const insertedInformation = (article) => {
     const new_articles = [...articles, article]
     setArticles(new_articles)
 
   }
+
 
   const deleteBtn = (article) => {
     const new_articles = articles.filter(myarticle => {
@@ -105,8 +113,11 @@ function App() {
         {is_staff && <div className = "col">
         <button onClick = {articleForm} className = "btn btn-primary">Insert Article</button>
         </div>}
-
-
+        
+        {is_staff && <div className = "col">
+        <button onClick = {handleUsers} className = "btn btn-primary">Users</button>
+        </div>}
+        
         <div className = "col">
         <button onClick = {logoutBtn} className = "btn btn-primary">Logout</button>
         </div>
@@ -114,7 +125,7 @@ function App() {
       </div>
 
 
-    
+       
 
         {!insertArticle && <ArticleList articles = {articles} editBtn = {editBtn} deleteBtn = {deleteBtn}/>}
         

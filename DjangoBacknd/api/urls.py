@@ -8,7 +8,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('articles', ArticleViewSet, basename='articles')
-router.register('users', UserViewSet)
+router.register('users', UserViewSet,basename='users')
 
 
 

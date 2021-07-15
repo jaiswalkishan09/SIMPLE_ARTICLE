@@ -7,7 +7,7 @@ from rest_framework.authentication import TokenAuthentication
 from django.contrib.auth.models import User
 
 # custom permission
-from .permission import IsAdminUser
+from .permission import IsAdminUser,IsStaffUser
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
@@ -21,6 +21,8 @@ class ArticleViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [IsStaffUser]
+    authentication_classes = (TokenAuthentication,)
 
 
 
