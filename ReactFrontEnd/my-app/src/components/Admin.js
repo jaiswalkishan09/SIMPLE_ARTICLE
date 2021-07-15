@@ -11,7 +11,7 @@ function Admin() {
   const [users, setUsers] = useState([]);
   const [editUser, setEditUser] = useState(null);
   const [token, setToken, removeToken] = useCookies(["mytoken"]);
-  const [showUser, setShowArticle] = useState(false);
+  // const [showUser, setShowArticle] = useState(false);
   let is_staff = JSON.parse(sessionStorage?.getItem("is_staff"));
   const [insertUser, setInsertUser] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
@@ -29,14 +29,14 @@ function Admin() {
       .then((resp) => resp.json())
       .then((resp) => setUsers(resp.reverse()))
       .catch((error) => console.log(error));
-  }, [users.length]);
+  }, [users.length,token]);
 
   useEffect(() => {
     if (!token["mytoken"]) {
       history.push("/");
       
     }
-  }, [token]);
+  }, [token,history]);
 
   const editBtn = (user) => {
     setInsertUser(true);

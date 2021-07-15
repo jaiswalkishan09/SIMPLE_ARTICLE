@@ -50,52 +50,56 @@ function UserForm(props) {
       {props.user ? (
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
-            UserName
+            UserName:
           </label>
           <input
             type="text"
             className="form-control"
             id="username"
-            placeholder="Please Enter The UserName"
+            placeholder=" Enter The UserName"
             value={username}
             onChange={(e) => setUserName(e.target.value)}
           />
 
-          <label htmlFor="description" className="form-label">
-            first_name
+          {/* <label htmlFor="description" className="form-label">
+            First Name:
           </label>
 
           <textarea
             className="form-control"
             id="first_name"
+            placeholder="Enter First Name"
             rows="1"
             value={first_name}
             onChange={(e) => setFirst_Name(e.target.value)}
           ></textarea>
 
-          <label>last_name</label>
+          <label>Last Name:</label>
           <textarea
             className="form-control"
             id="last_name"
             rows="1"
+            placeholder="Enter The LastName"
             value={last_name}
             onChange={(e) => setLast_Name(e.target.value)}
-          ></textarea>
-          <label>email</label>
+          ></textarea> */}
+          <label>Email:</label>
           <textarea
             className="form-control"
             id="email"
             rows="1"
+            placeholder="Enter The Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></textarea>
          
           {props?.isEditable && (
             <div>
-              <label>password</label>
+              <label>Password:</label>
               <textarea
                 className="form-control"
                 id="password"
+                placeholder="Enter The UserName"
                 rows="1"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

@@ -6,15 +6,15 @@ import { useHistory } from "react-router-dom";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [token, setToken] = useCookies(["mytoken"]);
   const [isLogin, setLogin] = useState(true);
   let history = useHistory();
-
   useEffect(() => {
     if (token["mytoken"]) {
       history.push("/articles");
     }
-  }, [token]);
+  }, [token,history]);
 
   const loginBtn = () => {
     if (username.length > 0 && password.length > 0) {
@@ -30,7 +30,7 @@ function Login() {
   };
 
   const RegisterBtn = () => {
-    APIService.RegisterUser({ username, password })
+    APIService.RegisterUser({ username,email, password })
       .then((resp) => {
        if (Boolean(resp)) {
 
@@ -61,7 +61,23 @@ function Login() {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-
+      {
+        !isLogin && 
+      ( <div className="mb-3">
+      <label htmlFor="email" className="form-label">
+        Email:
+      </label>
+      <input
+        required
+        type="Email"
+        className="form-control"
+        id="Email"
+        placeholder="Please Enter you Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+    </div>)
+      }
       <div className="mb-3">
         <label htmlFor="password" className="form-label">
           Password

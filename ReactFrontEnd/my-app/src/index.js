@@ -8,7 +8,7 @@ import {Route, BrowserRouter} from 'react-router-dom';
 import Login from './components/Login'
 import {CookiesProvider} from 'react-cookie';
 import Admin from './components/Admin'
-let is_staff = JSON.parse(sessionStorage?.getItem("is_staff"));   
+// let is_staff = JSON.parse(sessionStorage?.getItem("is_staff"));   
 function Router() {
    
   return(

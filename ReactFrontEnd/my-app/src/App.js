@@ -10,7 +10,6 @@ import React  from 'react';
 
 export const mycontext=React.createContext()
 function App() {
- 
   const [articles, setArticles] = useState([])
   const [editArticle, setEditArticle] = useState(null)
   const [token, setToken, removeToken] = useCookies(['mytoken'])
@@ -33,7 +32,7 @@ function App() {
     .then(resp => setArticles(resp.reverse()))
     .catch(error => console.log(error))
 
-  }, [articles.length])
+  }, [articles.length,token])
 
  
   useEffect(() => {
@@ -42,7 +41,7 @@ function App() {
         
        
     }
-}, [token])
+}, [token,history])
 
   const editBtn = (article) => {
     setInsertArticle(true)
