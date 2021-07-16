@@ -58,7 +58,7 @@ export default class APIService {
       if (resp.status === 201) {
         return resp.json();
       } else {
-        alert("Pleas Input valid  data or you Have account please Login");
+        alert("Please Input valid  data or you Have account please Login or try using other username");
       }
     });
   }

@@ -1,7 +1,7 @@
 
 
 from django.urls import path, include
-from .views import ArticleViewSet, UserViewSet
+from .views import ArticleViewSet, UserViewSet,UserViewSetIsStaff
 from rest_framework.routers import DefaultRouter
 
 #article_list, article_details, ArticleList, ArticleDetails
@@ -9,7 +9,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('articles', ArticleViewSet, basename='articles')
 router.register('users', UserViewSet,basename='users')
-
+router.register('usersx', UserViewSetIsStaff,basename='usersx')
 
 
 urlpatterns = [

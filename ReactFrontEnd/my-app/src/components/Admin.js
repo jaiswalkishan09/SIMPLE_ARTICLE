@@ -20,7 +20,7 @@ function Admin() {
   let history = useHistory();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/users/", {
+    fetch("http://127.0.0.1:8000/api/usersx/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
