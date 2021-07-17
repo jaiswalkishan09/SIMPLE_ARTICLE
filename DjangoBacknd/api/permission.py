@@ -19,8 +19,8 @@ class IsAdminUser(BasePermission):
 class IsStaffUser(BasePermission):
     message="You Need to be Staff Users To Grant Permission is_staff)"
     def has_permission(self,request,view):
-        if request.method in permissions.SAFE_METHODS:
-            return True
+        # if request.method in permissions.SAFE_METHODS:
+        #     return True
         if request.method in ["POST"]:
             # print(request.body.decode("utf-8"))
             import json
