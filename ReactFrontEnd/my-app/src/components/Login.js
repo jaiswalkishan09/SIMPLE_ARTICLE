@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
   const [token, setToken] = useCookies(["mytoken"]);
   const [isLogin, setLogin] = useState(true);
   let history = useHistory();
@@ -25,13 +24,13 @@ function Login() {
         }
       });
     } else{
-      alert("Please Enter Username and Password");
+      alert("Please Enter Email and Password");
     }
   };
 
   const RegisterBtn = () => {
    
-      APIService.RegisterUser({ username,email, password })
+      APIService.RegisterUser({ username, password })
       .then((resp) => {
        if (Boolean(resp)) {
 
@@ -53,35 +52,19 @@ function Login() {
 
       <div className="mb-3">
         <label htmlFor="username" className="form-label">
-          Username
+          Email
         </label>
         <input
           required
           type="text"
           className="form-control"
           id="username"
-          placeholder="Please Enter Username"
+          placeholder="Please Enter Your Email"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      {
-        !isLogin && 
-      ( <div className="mb-3">
-      <label htmlFor="email" className="form-label">
-        Email:
-      </label>
-      <input
-        required
-        type="Email"
-        className="form-control"
-        id="Email"
-        placeholder="Please Enter you Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-    </div>)
-      }
+     
       <div className="mb-3">
         <label htmlFor="password" className="form-label">
           Password

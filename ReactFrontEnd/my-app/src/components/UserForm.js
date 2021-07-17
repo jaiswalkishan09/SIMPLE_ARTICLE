@@ -5,22 +5,19 @@ import { useCookies } from "react-cookie";
 function UserForm(props) {
   const [username, setUserName] = useState("");
   const [is_staff, setIsStaff] = useState("false");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token] = useCookies(["mytoken"]);
 
   useEffect(() => {
     setUserName(props.user.username);
     setIsStaff(props.user.is_staff);
-    // setLast_Name(props.user.last_name);
-    setEmail(props.user.email);
     setPassword(props.user.password);
   }, [props.user]);
 
   const updateUser = () => {
     APIUserService.UpdateUser(
       props.user.id,
-      { username, email, is_staff },
+      { username, is_staff },
       token["mytoken"]
     ).then((resp) => {
       props.setInsertUser(false);
@@ -30,7 +27,7 @@ function UserForm(props) {
 
   const insertUser = () => {
     APIUserService.InsertUser(
-      { username, email, password, is_staff },
+      { username, password, is_staff },
       token["mytoken"]
     ).then((resp) => {
       props.setInsertUser(false);
@@ -47,26 +44,16 @@ function UserForm(props) {
       {props.user ? (
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
-            UserName:
+            UserEmail:
           </label>
           <input
             type="text"
             className="form-control"
             id="username"
-            placeholder=" Enter The UserName"
+            placeholder=" Enter The UserEmail"
             value={username}
             onChange={(e) => setUserName(e.target.value)}
           />
-
-          <label>Email:</label>
-          <textarea
-            className="form-control"
-            id="email"
-            rows="1"
-            placeholder="Enter The Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></textarea>
 
           {props?.isEditable && (
             <div>
@@ -74,7 +61,7 @@ function UserForm(props) {
               <textarea
                 className="form-control"
                 id="password"
-                placeholder="Enter The UserName"
+                placeholder="Enter The UserPassword"
                 rows="1"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

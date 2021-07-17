@@ -42,7 +42,7 @@ export default class APIService {
       if (resp.status === 200) {
         return resp.json();
       } else {
-        alert("Please Enter Correct username and password");
+        alert("Please Enter Correct Email and password");
       }
     });
   }
@@ -58,7 +58,7 @@ export default class APIService {
       if (resp.status === 201) {
         return resp.json();
       } else {
-        alert("Please Input valid  data or you Have account please Login or try using other username");
+        alert("Please Input valid  data or you Have account please Login ");
       }
     });
   }
