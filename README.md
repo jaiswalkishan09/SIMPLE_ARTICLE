@@ -14,5 +14,7 @@ In admin pannel of user you can grant acces revoke access from the users
 
 To_Run:
 first crete a superuer: python3 manage.py createsuperuser
+and the usename must be an email type
+
 and then login with the superuser
 if you register direct by cutom login page than you have only read permission.
